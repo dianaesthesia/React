@@ -7,8 +7,8 @@ const App = () => {
     return (
         <div>
             {
-                simpsons.map(simpson=> (
-                    <SimpsonComponent item={simpson} key={simpson.id}/>
+                simpsons.map((simpson, index) => (
+                    <SimpsonComponent item={simpson} key={index}/>
                 ))
             }
         </div>
