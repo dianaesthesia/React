@@ -1,10 +1,16 @@
 import './App.css';
+import {simpsons} from './data/simpsons_array';
+import {SimpsonComponent} from './components/simpson/SimpsonComponent';
 
 
 const App = () => {
     return (
         <div>
-            App
+            {
+                simpsons.map(simpson=> (
+                    <SimpsonComponent item={simpson} key={simpson.id}/>
+                ))
+            }
         </div>
     );
 };
