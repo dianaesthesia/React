@@ -1,10 +1,12 @@
 import './App.css';
 
+import {UsersContainer} from "./components/UsersComponent/UsersContainer";
+
 
 const App = () => {
     return (
         <div>
-            App
+            <UsersContainer/>
         </div>
     );
 };
