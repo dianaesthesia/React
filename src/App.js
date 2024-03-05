@@ -1,10 +1,11 @@
 import './App.css';
+import {CommentsContainer} from "./components/CommentsComponent/CommentsContainer";
 
 
 const App = () => {
     return (
         <div>
-            App
+            <CommentsContainer/>
         </div>
     );
 };
