@@ -4,6 +4,6 @@ const users = '/users';
 
 const urls = {
     users
-}
+};
 
 export {baseURL, urls};
