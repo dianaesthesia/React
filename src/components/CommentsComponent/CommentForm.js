@@ -4,6 +4,7 @@ import {commentApiService} from "../../services/comment.api.service";
 
 const CommentForm = ({setComments}) => {
     const {register, handleSubmit} = useForm();
+
     const postComment = (item) => {
         commentApiService.create(item).then(({data}) => setComments(prev => ([...prev, data])))
     };
