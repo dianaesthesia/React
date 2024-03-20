@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+
 import {carApiService} from "../../services/car.api.service";
 import {CarForm} from "./CarForm";
 import {Cars} from "./Cars";
@@ -16,7 +17,7 @@ const CarsContainer = () => {
         <div>
             <CarForm setTrigger={setTrigger} carForUpdate={carForUpdate} setCarForUpdate={setCarForUpdate}/>
             <hr/>
-            <Cars cars={cars} setCarForUpdate={setCarForUpdate}/>
+            <Cars cars={cars} setCarForUpdate={setCarForUpdate} setTrigger={setTrigger}/>
         </div>
     );
 };

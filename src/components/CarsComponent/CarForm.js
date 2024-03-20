@@ -14,16 +14,23 @@ const CarForm = ({setTrigger, carForUpdate, setCarForUpdate}) => {
             setValue('price', carForUpdate.price, {shouldValidate: true})
             setValue('year', carForUpdate.year, {shouldValidate: true})
         }
-    }, [carForUpdate]);
+    }, [carForUpdate, setValue]);
 
-    const save = async (item) => {
+    const saveCar = async (item) => {
         await carApiService.create(item);
-        setTrigger(prev => !prev)
-        reset()
+        setTrigger(prev => !prev);
+        reset();
+    };
+
+    const updateCar = async (item) => {
+        await carApiService.updateById(carForUpdate.id, item);
+        setTrigger(prev => !prev);
+        setCarForUpdate(null);
+        reset();
     };
 
     return (
-        <form onSubmit={handleSubmit(save)}>
+        <form onSubmit={handleSubmit(carForUpdate ? updateCar : saveCar)}>
             <input type={"text"} placeholder={'brand'} {...register('brand', {
                 pattern: {
                     value: /^[a-zA-Zа-яА-яёЁіІїЇєЄҐґ]{1,20}$/,
@@ -43,7 +50,7 @@ const CarForm = ({setTrigger, carForUpdate, setCarForUpdate}) => {
                 min: {value: 1990, message: 'min 1990'},
                 max: {value: new Date().getFullYear(), message: 'max current year'}
             })}/>
-            <button disabled={!isValid}>Save</button>
+            <button disabled={!isValid}>{carForUpdate ? 'Update' : 'Save'}</button>
             {errors.brand && <div>{errors.brand.message}</div>}
             {errors.price && <div>{errors.price.message}</div>}
             {errors.year && <div>{errors.year.message}</div>}
